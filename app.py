@@ -36,7 +36,7 @@ def send_message(msg):
 	json = urlopen(request).read().decode()
 
 def flipACoin():
-	coin = bool(random.getrandbits(1))
+	coin = random.choice([True, False])
 	msg = 'heads' if coin else 'tails'
 	send_message(msg)
 
