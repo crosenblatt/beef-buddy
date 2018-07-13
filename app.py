@@ -42,4 +42,4 @@ def flipACoin():
 
 def pickANumber(start, end):
 	rand = random.randint(start, end + 1)
-	send_msg(rand)
+	send_msg(String(rand))
