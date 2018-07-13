@@ -42,5 +42,5 @@ def flipACoin():
 	send_message(msg)
 
 def pickANumber(start, end):
-	rand = random.randint(start, end + 1)
+	rand = random.randint(start, end)
 	send_message(str(rand))
