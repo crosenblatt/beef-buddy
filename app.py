@@ -15,7 +15,7 @@ def webhook():
 	if data['text'] == 'Hi BeefBuddy':
 		msg = 'Hi {}!'.format(data['name'])
 		send_message(msg)
-	else if data['text'] == 'BeefBuddy, flip a coin':
+	elif data['text'] == 'BeefBuddy, flip a coin':
 		flipACoin()
 
 
