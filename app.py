@@ -1,5 +1,6 @@
 import os
 import json
+import random
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -11,9 +12,13 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webhook():
 	data = request.get_json()
-	if data['name'] != 'BeefBuddy' and data['text'] == 'Hi BeefBuddy':
+	if data['text'] == 'Hi BeefBuddy':
 		msg = 'Hi {}!'.format(data['name'])
 		send_message(msg)
+	else if data['text'] == 'BeefBuddy, flip a coin':
+		flipACoin()
+
+
 
 	return 'OK', 200
 
@@ -27,3 +32,7 @@ def send_message(msg):
 
 	request = Request(url, urlencode(data).encode())
 	json = urlopen(request).read().decode()
+
+def flipACoin():
+	coin = bool(random.getrandbits(1))
+	msg = 'heads' if coin else 'tails'
