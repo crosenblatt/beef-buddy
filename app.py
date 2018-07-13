@@ -36,3 +36,4 @@ def send_message(msg):
 def flipACoin():
 	coin = bool(random.getrandbits(1))
 	msg = 'heads' if coin else 'tails'
+	send_message(msg)
