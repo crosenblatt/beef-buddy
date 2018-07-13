@@ -19,7 +19,7 @@ def webhook():
 		flipACoin()
 	elif 'BeefBuddy, pick a number' in data['text']:
 		nums = [int(s) for s in data['text'].split() if s.isdigit()]
-		log(nums)
+		print(nums)
 		if len(nums) == 2:
 			pickANumber(nums[0], nums[1])
 
