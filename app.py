@@ -1,6 +1,7 @@
 import os
 import json
 import random
+import datetime
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -17,10 +18,10 @@ def webhook():
 	if query == 'hi beefbuddy':
 		sayHi(data['name'])
 
-	if 'beefbuddy, flip a coin' in query:
+	if 'beefbuddy' in query and 'flip a coin' in query:
 		flipACoin()
 
-	if 'beefbuddy, pick a number' in query:
+	if 'beefbuddy' in query and 'pick a number' in query:
 		nums = [int(s) for s in data['text'].split() if s.isdigit()]
 		if len(nums) == 2:
 			pickANumber(nums[0], nums[1])
@@ -31,11 +32,14 @@ def webhook():
 		else:
 			yesOrNo()
 
-	if query == 'where is the center of the maze':
+	if 'where is the center of the maze' in query:
 		maze()
 
-	if query == 'where is the door':
+	if 'where is the door' in query:
 		door(data['name'])
+
+	if query == 'tell me a fact':
+		factOfTheDay()
 
 	return 'OK', 200
 
@@ -64,6 +68,12 @@ def pickANumber(start, end):
 
 def yesOrNo():
 	send_message(random.choice(['yes', 'no']))
+
+def factOfTheDay():
+	now = datetime.datetime.now()
+	url = 'http://numbersapi.com/{}/{}/date'.format(now.month, now.day)
+	req = Request(url)
+	text = urlopen(req).read()
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
