@@ -2,7 +2,6 @@ import os
 import json
 import random
 import requests
-import simplejson
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -18,9 +17,6 @@ def webhook():
 
 	if query == 'hi beefbuddy':
 		sayHi(data['name'])
-
-	if query == 'beefbuddy, list all commands':
-
 
 	if 'beefbuddy, flip a coin' in query:
 		flipACoin()
