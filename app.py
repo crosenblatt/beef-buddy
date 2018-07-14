@@ -73,6 +73,7 @@ def factOfTheDay():
 	#response = requests.get('http://numbersapi.com/{}/{}/date'.format(now.month, now.day))
 	#print(response.content)
 	#send_message(response.content)
+	return
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
