@@ -2,7 +2,6 @@ import os
 import json
 import random
 import datetime
-import requests
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
