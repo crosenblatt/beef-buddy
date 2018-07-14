@@ -2,6 +2,7 @@ import os
 import json
 import random
 import datetime
+import requests
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -70,10 +71,9 @@ def yesOrNo():
 	send_message(random.choice(['yes', 'no']))
 
 def factOfTheDay():
-	now = datetime.datetime.now()
-	url = 'http://numbersapi.com/{}/{}/date'.format(now.month, now.day)
-	req = Request(url)
-	text = urlopen(req).read()
+	response = requests.get('http://numbersapi.com/{}/{}/date'.format(now.month, now.day))
+	print(response.content)
+	send_message(response.content)
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
