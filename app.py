@@ -2,6 +2,7 @@ import os
 import json
 import random
 import datetime
+import requests
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -15,31 +16,32 @@ def webhook():
 	data = request.get_json()
 	query = data['text'].lower()
 
-	if query == 'hi beefbuddy':
-		sayHi(data['name'])
+	if 'beefbuddy' in query:
+		if query == 'hi beefbuddy':
+			sayHi(data['name'])
 
-	if 'beefbuddy' in query and 'flip a coin' in query:
-		flipACoin()
+		if 'flip a coin' in query:
+			flipACoin()
 
-	if 'beefbuddy' in query and 'pick a number' in query:
-		nums = [int(s) for s in data['text'].split() if s.isdigit()]
-		if len(nums) == 2:
-			pickANumber(nums[0], nums[1])
+		if 'pick a number' in query:
+			nums = [int(s) for s in data['text'].split() if s.isdigit()]
+			if len(nums) == 2:
+				pickANumber(nums[0], nums[1])
 
-	if 'beefbuddy' in query and 'yes or no' in query:
-		if 'is a hot dog a sandwich' in query:
-			send_message('yes')
-		else:
-			yesOrNo()
+		if 'yes or no' in query:
+			if 'is a hot dog a sandwich' in query:
+				send_message('yes')
+			else:
+				yesOrNo()
 
-	if 'where is the center of the maze' in query:
-		maze()
+		if 'where is the center of the maze' in query:
+			maze()
 
-	if 'where is the door' in query:
-		door(data['name'])
+		if 'where is the door' in query:
+			door(data['name'])
 
-	if query == 'tell me a fact':
-		factOfTheDay()
+		if query == 'tell me a fact':
+			factOfTheDay()
 
 	return 'OK', 200
 
@@ -70,10 +72,9 @@ def yesOrNo():
 	send_message(random.choice(['yes', 'no']))
 
 def factOfTheDay():
-	#response = requests.get('http://numbersapi.com/{}/{}/date'.format(now.month, now.day))
-	#print(response.content)
-	#send_message(response.content)
-	return
+	response = requests.get('http://numbersapi.com/{}/{}/date'.format(now.month, now.day))
+	print(response.text)
+	send_message(response.text)
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
