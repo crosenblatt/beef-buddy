@@ -72,7 +72,6 @@ def yesOrNo():
 	send_message(random.choice(['yes', 'no']))
 
 def factOfTheDay():
-	now = datetime.now()
 	response = requests.get('http://numbersapi.com/random')
 	print(response.text)
 	send_message(response.text)
