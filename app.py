@@ -40,7 +40,7 @@ def webhook():
 		if 'where is the door' in query:
 			door(data['name'])
 
-		if query == 'tell me a fact':
+		if 'tell me a fact' in query:
 			factOfTheDay()
 
 	return 'OK', 200
@@ -72,7 +72,7 @@ def yesOrNo():
 	send_message(random.choice(['yes', 'no']))
 
 def factOfTheDay():
-	response = requests.get('http://numbersapi.com/{}/{}/date'.format(now.month, now.day))
+	response = requests.get('numbersapi.com/7/15/date')
 	print(response.text)
 	send_message(response.text)
 
