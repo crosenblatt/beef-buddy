@@ -35,6 +35,9 @@ def webhook():
 			else:
 				yesOrNo()
 
+		if 'what can you do' in query:
+			listAllCommands()
+
 		if 'tell me the weather' in query:
 			getWeather(query.split('in ')[1].title())
 
