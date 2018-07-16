@@ -35,17 +35,17 @@ def webhook():
 			else:
 				yesOrNo()
 
+		if 'tell me the weather' in query:
+			getWeather(query.split('in ')[1].title())
+
+		if 'tell me a fact' in query:
+			factOfTheDay()
+
 		if 'where is the center of the maze' in query:
 			maze()
 
 		if 'where is the door' in query:
 			door(data['name'])
-
-		if 'tell me a fact' in query:
-			factOfTheDay()
-
-		if 'tell me the weather' in query:
-			getWeather()
 
 	return 'OK', 200
 
@@ -64,7 +64,7 @@ def sayHi(name):
 	send_message('Hi {}!'.format(name))
 
 def listAllCommands():
-	send_message('flip a coin, pick a number, yes or no')
+	send_message('flip a coin, pick a number, yes or no, tell the weather, tell a random fact')
 
 def flipACoin():
 	send_message(random.choice['heads', 'tails'])
@@ -79,12 +79,15 @@ def factOfTheDay():
 	response = requests.get('http://numbersapi.com/random')
 	send_message(response.text)
 
-def getWeather():
-	owm = pyowm.OWM(os.getenv('WEATHER_API'))
-	obs = owm.weather_at_place('Old Bridge,US')
-	w = obs.get_weather()
-	temp = w.get_temperature('fahrenheit')['temp']
-	send_message(('The current temperature is {} degrees.'.format(temp)))
+def getWeather(town):
+	try:
+		owm = pyowm.OWM(os.getenv('WEATHER_API'))
+		obs = owm.weather_at_place('{},US'.format(town))
+		w = obs.get_weather()
+		temp = w.get_temperature('fahrenheit')['temp']
+		send_message(('the current temperature in {} is {} degrees'.format(town, temp)))
+	except:
+		send_message('sorry, i don\'t know that area')
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
