@@ -3,6 +3,7 @@ import json
 import random
 import datetime
 import requests
+import pyowm
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -73,8 +74,14 @@ def yesOrNo():
 
 def factOfTheDay():
 	response = requests.get('http://numbersapi.com/random')
-	print(response.text)
 	send_message(response.text)
+
+def getWeather():
+	owm = pyowm.OWM(os.getenv('WEATHER_API'))
+	obs = owm.weather_at_place('Old Bridge,US')
+	w = obs.get_weather()
+	temp = w.get_temperature('fahrenheit')['temp']
+	send_message(('The current temperature is {} degrees.'.format(temp)))
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
