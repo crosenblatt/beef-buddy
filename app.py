@@ -44,6 +44,9 @@ def webhook():
 		if 'tell me a fact' in query:
 			factOfTheDay()
 
+		if 'tell me the weather' in query:
+			getWeather()
+
 	return 'OK', 200
 
 def send_message(msg):
