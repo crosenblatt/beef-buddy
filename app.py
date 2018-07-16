@@ -85,7 +85,7 @@ def getWeather(town):
 		obs = owm.weather_at_place('{},US'.format(town))
 		w = obs.get_weather()
 		temp = w.get_temperature('fahrenheit')['temp']
-		send_message(('the current temperature in {} is {} degrees'.format(town, temp)))
+		send_message(('the current temperature in {} is {} degrees'.format(town, temp).lower()))
 	except:
 		send_message('sorry, i don\'t know that area')
 
