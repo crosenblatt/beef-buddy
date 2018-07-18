@@ -73,7 +73,7 @@ def sayHi(name):
 	send_message('Hi {}!'.format(name))
 
 def listAllCommands():
-	send_message('flip a coin, pick a number, yes or no, tell the weather, tell a random fact')
+	send_message('flip a coin, pick a number, yes or no, tell the weather, tell a random fact, inspire you, recognize special days')
 
 def flipACoin():
 	send_message(random.choice['heads', 'tails'])
@@ -115,10 +115,16 @@ def specialDay():
 	else:
 		send_message('not that i know of...')
 
+def inspire():
+	response = requests.get("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json")
+	js = json.loads(response.text)
+	msg = js['quoteText'] + ' -' + js['quoteAuthor'] if js['quoteAuthor'] != "" else js['quoteText'] + ' -Anonymous'
+	send_message(msg)
+
 def creatorMessage():     
 	send_message("""I was created by Chris Rosenblatt, a
 computer science and math student at Purdue University. I also utilize the
-Numbers API (numbersapi.com) as well as the Open Weather Map API
+Numbers API (numbersapi.com), the forismatic API (https://forismatic.com/en/api/) as well as the Open Weather Map API
 (openweathermap.org) wrapped with the pyowm library
 (https://github.com/csparpa/pyowm). To find out more about Chris and his
 projects, visit crosenblatt.me or github.com/crosenblatt.""")
