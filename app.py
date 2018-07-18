@@ -44,6 +44,8 @@ def webhook():
 		if 'tell me a fact' in query:
 			factOfTheDay()
 
+		if 'is today a specical day' in query:
+			specialDay()
 
 		if 'who made you' in query or 'who created you' in query:
 			creatorMessage()
@@ -96,7 +98,25 @@ def getWeather(town):
 	except:
 		send_message('sorry, i don\'t know that area')
 
-def creatorMessage():     send_message("""I was created by Chris Rosenblatt, a
+def specialDay():
+	now = datetime.datetime.now()
+	bday == ''
+	if now.month == 2 and now.day == 22:
+		bday = 'chris'
+	elif now.month == 11 and now.day == 8:
+		bday = 'alex'
+	elif now.month == 6 and now.day == 28:
+		bday = 'bharti'
+	elif now.month == 5 and now.day == 23:
+		bday = 'lynn'
+
+	if bday != "":
+		send_message('today is {}\'s birthday! happy birthday!'.format(bday))
+	else:
+		send_message('not that i know of...')
+
+def creatorMessage():     
+	send_message("""I was created by Chris Rosenblatt, a
 computer science and math student at Purdue University. I also utilize the
 Numbers API (numbersapi.com) as well as the Open Weather Map API
 (openweathermap.org) wrapped with the pyowm library
