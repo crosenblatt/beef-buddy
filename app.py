@@ -47,6 +47,9 @@ def webhook():
 		if 'is today a specical day' in query:
 			specialDay()
 
+		if 'inspire me' in query or 'inspire us' in query:
+			inspire()
+
 		if 'who made you' in query or 'who created you' in query:
 			creatorMessage()
 
