@@ -44,6 +44,10 @@ def webhook():
 		if 'tell me a fact' in query:
 			factOfTheDay()
 
+
+		if 'who made you' in query or 'who created you' in query:
+			creatorMessage()
+
 		if 'where is the center of the maze' in query:
 			maze()
 
@@ -91,6 +95,13 @@ def getWeather(town):
 		send_message(('the current temperature in {} is {} degrees'.format(town, temp).lower()))
 	except:
 		send_message('sorry, i don\'t know that area')
+
+def creatorMessage():     send_message("""I was created by Chris Rosenblatt, a
+computer science and math student at Purdue University. I also utilize the
+Numbers API (numbersapi.com) as well as the Open Weather Map API
+(openweathermap.org) wrapped with the pyowm library
+(https://github.com/csparpa/pyowm). To find out more about Chris and his
+projects, visit crosenblatt.me or github.com/crosenblatt.""")
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
