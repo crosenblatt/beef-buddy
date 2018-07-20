@@ -1,7 +1,7 @@
-#BeefBuddy
+# BeefBuddy 
 A GroupMe chatbot created for simple tasks that a small group might need accomplished.
 
-#Commands List
+# Commands List 
 * Flip a Coin
 * Pick a number a to b
 * Yes or No
