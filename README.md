@@ -9,6 +9,7 @@ A GroupMe chatbot created for simple tasks that a small group might need accompl
 * Tell me a fact
 * Recognize special days
 * Inspire me
-* Evaluate simple math problems
-**There are also some easter eggs to discover**
+* Evaluate simple math problems 
+
+_There are also some easter eggs to discover_
 
