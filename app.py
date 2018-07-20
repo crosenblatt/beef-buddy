@@ -79,7 +79,7 @@ def sayHi(name):
 	send_message('Hi {}!'.format(name))
 
 def listAllCommands():
-	send_message('flip a coin, pick a number, yes or no, tell the weather, tell a random fact, inspire you, recognize special days')
+	send_message('flip a coin, pick a number, yes or no, tell the weather, tell a random fact, inspire you, recognize special days, evaluate simple math problems')
 
 def flipACoin():
 	send_message(random.choice['heads', 'tails'])
