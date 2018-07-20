@@ -44,7 +44,7 @@ def webhook():
 		if 'tell me a fact' in query:
 			factOfTheDay()
 
-		if 'is today a specical day' in query:
+		if 'is today a special day' in query:
 			specialDay()
 
 		if 'inspire me' in query or 'inspire us' in query:
@@ -129,21 +129,32 @@ def inspire():
 
 def math(msg):
 	nums = [int(s) for s in msg.split() if s.isdigit()]
-	if len(nums) == 2:
-		if '+' in msg:
-			send_message(str(nums[0] + nums[1]))
-		elif '-' in msg:
-			send_message(str(nums[0] - nums[1]))
-		elif '*' in msg:
-			send_message(str(nums[0] * nums[1]))
-		elif '/' in msg:
-			send_message(str(nums[0] / nums[1]))
-		elif '^' in msg:
-			send_message(str(nums[0] ** nums[1]))
+	try:
+		if len(nums) == 2:
+			if '+' in msg:
+				send_message(str(nums[0] + nums[1]))
+			elif '-' in msg:
+				send_message(str(nums[0] - nums[1]))
+			elif '*' in msg:
+				send_message(str(nums[0] * nums[1]))
+			elif '/' in msg:
+				send_message(str(nums[0] / nums[1]))
+			elif '^' in msg:
+				send_message(str(nums[0] ** nums[1]))
+			else:
+				send_message("sorry, i don't know how to do that")
 		else:
-			send_message("sorry, i don't know how to do that")
-	else:
-		send_message("please enter a valid equation")
+			send_message("please enter a valid equation")
+	except:
+		if nums[0] == 0 and nums[1] == 0:
+			send_message(
+				"""
+				Imagine that you have zero cookies, and you split them evenly among zero friends. How many cookies does each person get? See? 
+				It doesn’t make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends.
+				"""
+				.lower())
+		else:
+			send_message("i can't do that")
 
 def creatorMessage():     
 	send_message("""I was created by Chris Rosenblatt, a
