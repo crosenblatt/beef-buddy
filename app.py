@@ -146,7 +146,7 @@ def math(msg):
 		else:
 			send_message("please enter a valid equation")
 	except:
-		if nums[0] == 0 and nums[1] == 0:
+		if nums[0] == 0 and nums[1] == 0 and '/' in msg:
 			send_message(
 				"""Imagine that you have zero cookies, and you split them evenly among zero friends. How many cookies does each person get? See? It doesn’t make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends."""
 				.lower())
