@@ -50,6 +50,9 @@ def webhook():
 		if 'inspire me' in query or 'inspire us' in query:
 			inspire()
 
+		if 'evaluate' in query:
+			math(query)
+
 		if 'who made you' in query or 'who created you' in query:
 			creatorMessage()
 
@@ -123,6 +126,24 @@ def inspire():
 	js = json.loads(response.text)
 	msg = js['quoteText'] + ' -' + js['quoteAuthor'] if js['quoteAuthor'] != "" else js['quoteText'] + ' -Anonymous'
 	send_message(msg)
+
+def math(msg):
+	nums = [int(s) for s in msg.split() if s.isdigit()]
+	if len(nums) == 2:
+		if '+' in msg:
+			send_message(str(nums[0] + nums[1]))
+		elif '-' in msg:
+			send_message(str(nums[0] - nums[1]))
+		elif '*' in msg:
+			send_message(str(nums[0] * nums[1]))
+		elif '/' in msg:
+			send_message(str(nums[0] / nums[1]))
+		elif '^' in msg:
+			send_message(str(nums[0] ** nums[1]))
+		else:
+			send_message("sorry, i don't know how to do that")
+	else:
+		send_message("please enter a valid equation")
 
 def creatorMessage():     
 	send_message("""I was created by Chris Rosenblatt, a
