@@ -106,7 +106,7 @@ def getWeather(town):
 
 def specialDay():
 	now = datetime.datetime.now()
-	bday == ''
+	bday = ''
 	if now.month == 2 and now.day == 22:
 		bday = 'chris'
 	elif now.month == 11 and now.day == 8:
