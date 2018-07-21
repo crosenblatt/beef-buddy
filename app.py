@@ -115,6 +115,9 @@ def specialDay():
 		bday = 'bharti'
 	elif now.month == 5 and now.day == 23:
 		bday = 'lynn'
+	elif now.month == 5 and now.day == 16:
+		send_message("happy friendaversary!")
+		return
 
 	if bday != "":
 		send_message('today is {}\'s birthday! happy birthday!'.format(bday))
