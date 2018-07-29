@@ -100,7 +100,7 @@ def getWeather(town):
 		obs = owm.weather_at_place('{},US'.format(town))
 		w = obs.get_weather()
 		temp = w.get_temperature('fahrenheit')['temp']
-		send_message(('the current temperature in {} is {} degrees'.format(town, temp).lower()))
+		send_message(('the current temperature in {} is {} degrees fahrenheit'.format(town, temp).lower()))
 	except:
 		send_message('sorry, i don\'t know that area')
 
@@ -145,7 +145,7 @@ def math(msg):
 			elif '^' in msg:
 				send_message(str(nums[0] ** nums[1]))
 			else:
-				send_message("sorry, i don't know how to do that")
+				send_message("sorry, i don't know how to do that. please enter something simpler.")
 		else:
 			send_message("please enter a valid equation")
 	except:
@@ -157,12 +157,7 @@ def math(msg):
 			send_message("i can't do that")
 
 def creatorMessage():     
-	send_message("""I was created by Chris Rosenblatt, a
-computer science and math student at Purdue University. I also utilize the
-Numbers API (numbersapi.com), the forismatic API (https://forismatic.com/en/api/) as well as the Open Weather Map API
-(openweathermap.org) wrapped with the pyowm library
-(https://github.com/csparpa/pyowm). To find out more about Chris and his
-projects, visit crosenblatt.me or github.com/crosenblatt.""")
+	send_message("""I was created by Chris Rosenblatt, a computer science and math student at Purdue University. I also utilize the Numbers API (numbersapi.com), the forismatic API (https://forismatic.com/en/api/) as well as the Open Weather Map API (openweathermap.org) wrapped with the pyowm library (https://github.com/csparpa/pyowm). To find out more about Chris and his projects, visit crosenblatt.me or github.com/crosenblatt.""")
 
 def maze():
 	send_message('the maze wasn\'t meant for you')
