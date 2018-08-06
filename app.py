@@ -72,6 +72,8 @@ def webhook():
 			name = 'bharti'
 		elif 'alex' in query:
 			name = 'alex'
+		else:
+			return
 
 		send_spam(name)
 
@@ -94,6 +96,12 @@ def send_spam(name):
 
 	if name == "chris":
 		msg = "@Chris Rosenblatt"
+	elif name == "lynn":
+		msg = "@Alex Lynn Phipps"
+	elif name == "alex":
+		msg = "@Alex Nguyen"
+	elif name == "bharti":
+		msg = "@Bharti Mehta"
 
 	url = 'https://api.groupme.com/v3/bots/post'
 	data = {
@@ -101,7 +109,7 @@ def send_spam(name):
 		'text':msg,
 	}
 
-	for i in range(5):
+	for i in range(10):
 		request = Request(url, urlencode(data).encode())
 		json = urlopen(request).read().decode()
 
