@@ -62,6 +62,19 @@ def webhook():
 		if 'where is the door' in query:
 			door(data['name'])
 
+	if data['group_id'] == os.getenv('SPAM_GROUP_ID') and 'spam' in query:
+		name = ''
+		if 'chris' in query:
+			name = 'chris'
+		elif 'lynn' in query:
+			name = 'lynn'
+		elif 'bharti' in query:
+			name = 'bharti'
+		elif 'alex' in query:
+			name = 'alex'
+
+		send_spam(name)
+
 	return 'OK', 200
 
 def send_message(msg):
@@ -74,6 +87,23 @@ def send_message(msg):
 
 	request = Request(url, urlencode(data).encode())
 	json = urlopen(request).read().decode()
+
+def send_spam(name):
+	name = name.lower()
+	msg = ""
+
+	if name == "chris":
+		msg = "@Chris Rosenblatt"
+
+	url = 'https://api.groupme.com/v3/bots/post'
+	data = {
+		'bot_id':os.getenv('SPAM_BOT_ID'),
+		'text':msg,
+	}
+
+	for i in range(5):
+		request = Request(url, urlencode(data).encode())
+		json = urlopen(request).read().decode()
 
 def sayHi(name):
 	send_message('Hi {}!'.format(name))
