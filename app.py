@@ -118,6 +118,7 @@ def send_spam(name):
 				]
 			}
 		],
+		'text':'@Chris Rosenblatt'
 		'bot_id':os.getenv('SPAM_BOT_ID'),
 	}
 
