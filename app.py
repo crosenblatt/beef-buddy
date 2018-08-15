@@ -106,20 +106,17 @@ def send_spam(name):
 
 	url = 'https://api.groupme.com/v3/bots/post'
 	data = {
-		'attachments': 
-		[
+		'bot_id':os.getenv('SPAM_BOT_ID'),
+		'text':'@Alex Nguyen',
+		'attachments': [
 			{
-				'type':'mentions',
-				'user_ids':[
-					14774111
-				],
+				'type': 'mentions',
+				'user_ids': [14774111],
 				'loci':[
 					[0, 12]
 				]
 			}
-		],
-		'text':'@Alex Nguyen',
-		'bot_id':os.getenv('SPAM_BOT_ID'),
+		]
 	}
 
 	for i in range(10):
