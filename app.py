@@ -94,28 +94,38 @@ def send_message(msg):
 def send_spam(name):
 	name = name.lower()
 	msg = ""
+	uid = 0
+	end = 0
 
 	if name == "chris":
 		msg = "@Chris Rosenblatt"
+		uid = 34524905
+		end = 17
 	elif name == "lynn":
 		msg = "@Alex Lynn Phipps"
+		uid = 0
+		end = 17
 	elif name == "alex":
 		msg = "@Alex Nguyen"
+		uid = 14774111
+		end = 12
 	elif name == "bharti":
 		msg = "@Bharti Mehta"
+		uid = 25970193
+		end = 13
 
 	url = 'https://api.groupme.com/v3/bots/post'
 	data = {
 		'bot_id':os.getenv('SPAM_BOT_ID'),
-		'text':'@Alex Nguyen',
+		'text': msg,
 		'attachments': [
 			{
 				'type': 'mentions',
-				'user_ids': [14774111],
+				'user_ids': [uid],
 				'loci':[
-					[0, 12]
+					[0, end]
 				],
-			}
+			},
 		]
 	}
 
