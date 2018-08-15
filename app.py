@@ -111,7 +111,7 @@ def send_spam(name):
 			{
 				'type':'mentions',
 				'user_ids':[
-					14774111,
+					14774111
 				],
 				'loci':[
 					[0, 12]
