@@ -119,13 +119,11 @@ def send_spam(name):
 		'bot_id':os.getenv('SPAM_BOT_ID'),
 		'text': msg,
 		'attachments': [
-			{
-				'type': 'mention',
-				'user_ids': [uid],
-				'loci':[
-					[0, end]
-				],
-			}
+		{
+			'type': 'mentions',
+			'user_ids': [uid],
+			'loci':[[0, end]],
+		}
 		]
 	}
 
