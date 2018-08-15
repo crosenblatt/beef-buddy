@@ -16,7 +16,7 @@ app = Flask(__name__)
 def webhook():
 	data = request.get_json()
 	query = data['text'].lower()
-	print('{} ID = {}'.format(data['name'], str(data['id'])))
+	print('{} ID = {}'.format(data['name'], str(data['sender_id'])))
 
 	if 'beefbuddy' in query:
 		if query == 'hi beefbuddy':
