@@ -124,7 +124,7 @@ def send_spam(name):
 			'user_ids': [uid],
 			'loci':[[0, end]],
 		}
-		]
+		],
 	}
 
 	for i in range(10):
