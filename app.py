@@ -114,7 +114,7 @@ def send_spam(name):
 				'user_ids': [14774111],
 				'loci':[
 					[0, 12]
-				]
+				],
 			}
 		]
 	}
