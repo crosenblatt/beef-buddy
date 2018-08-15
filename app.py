@@ -120,12 +120,12 @@ def send_spam(name):
 		'text': msg,
 		'attachments': [
 			{
-				'type': 'mentions',
+				'type': 'mention',
 				'user_ids': [uid],
 				'loci':[
 					[0, end]
 				],
-			},
+			}
 		]
 	}
 
