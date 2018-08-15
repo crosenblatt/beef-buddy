@@ -111,14 +111,14 @@ def send_spam(name):
 			{
 				'type':'mentions',
 				'user_ids':[
-					34524905,
+					14774111,
 				],
 				'loci':[
-					[0, 17]
+					[0, 12]
 				]
 			}
 		],
-		'text':'@Chris Rosenblatt',
+		'text':'@Alex Nguyen',
 		'bot_id':os.getenv('SPAM_BOT_ID'),
 	}
 
