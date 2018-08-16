@@ -103,7 +103,7 @@ def send_spam(name):
 		end = 17
 	elif name == "lynn":
 		msg = "@Alex Lynn Phipps"
-		uid = 0
+		uid = 21286017
 		end = 17
 	elif name == "alex":
 		msg = "@Alex Nguyen"
