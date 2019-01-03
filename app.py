@@ -144,7 +144,9 @@ def pickANumber(start, end):
 	send_message(str(random.randint(start, end)))
 
 def yesOrNo():
-	send_message(random.choice(['yes', 'no']))
+	send_message(random.choice(['it is certain', 'without a doubt', 'yes - definitely', 'most likely', 'yes',
+								'reply hazy, try again', 'ask again later', 'better not tell you now', 'cannot say now', 'concentrate and ask again',
+								'my reply is no', 'my sources say no', 'outlook not so good', 'very doubtful', 'no']))
 
 def factOfTheDay():
 	response = requests.get('http://numbersapi.com/random')
@@ -181,6 +183,10 @@ def specialDay():
 		send_message('not that i know of...')
 
 def inspire():
+	if random.choice(range(500)) == 42:
+		send_message("i seek adventure. i seek babson! -alexander nguyen")
+		return
+		
 	response = requests.get("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json")
 	js = json.loads(response.text)
 	msg = js['quoteText'] + ' -' + js['quoteAuthor'] if js['quoteAuthor'] != "" else js['quoteText'] + ' -Anonymous'
