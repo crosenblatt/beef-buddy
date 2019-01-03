@@ -4,6 +4,7 @@ import random
 import datetime
 import requests
 import pyowm
+import string
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -14,8 +15,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def webhook():
+	translator = str.maketrans('', '', string.punctuation)
+
 	data = request.get_json()
-	query = data['text'].lower()
+	query = data['text'].lower().translate(translator)
 	print('{} ID = {}'.format(data['name'], str(data['sender_id'])))
 
 	if 'beefbuddy' in query:
@@ -186,7 +189,7 @@ def inspire():
 	if random.choice(range(500)) == 42:
 		send_message("i seek adventure. i seek babson! -alexander nguyen")
 		return
-		
+
 	response = requests.get("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json")
 	js = json.loads(response.text)
 	msg = js['quoteText'] + ' -' + js['quoteAuthor'] if js['quoteAuthor'] != "" else js['quoteText'] + ' -Anonymous'
